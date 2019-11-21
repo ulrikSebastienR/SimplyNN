@@ -12,7 +12,8 @@ from tensorflow import keras
 import tensorflow as tf
 from tensorflow.keras import layers, models
 
-def FNN(input_shape, num_classes, base_dense_units = 64, dense_bool = True, num_layers, activation = 'relu', optimizer = 'SGD', loss = 'categorical_crossentropy', metrics, dropout = False, drop_value = 0.25, batch_norm = False, custom_act = False, summary = True):
+def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, dense_bool = True,  activation = 'relu', optimizer = 'SGD', loss = 'categorical_crossentropy', dropout = False, drop_value = 0.25, 
+        batch_norm = False, custom_act = False, summary = True):
     """Constructs a Fully Connected Feed Forward Neural Network Architecture
     
         Input Parameters:
