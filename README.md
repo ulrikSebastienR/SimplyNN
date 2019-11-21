@@ -18,6 +18,9 @@
 ### Using default activation function:
 
 ```
+import core from SimplyNN
+from SimplyNN.core import FNN
+
 input_shape = (28,28)
 num_classes = 10
 num_layers = 3
@@ -72,6 +75,9 @@ class Mish(Layer):
 Now, building the network with Mish activation function: 
 
 ```
+import core from SimplyNN
+from SimplyNN.core import FNN
+
 input_shape = (28,28)
 num_classes = 10
 num_layers = 3
