@@ -13,7 +13,7 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 
 def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, dense_bool = True,  activation = 'relu', optimizer = 'SGD', loss = 'categorical_crossentropy', dropout = False, drop_value = 0.25, 
-        batch_norm = False, custom_act = False, summary = True):
+        batch_norm = False, custom_act = False, custom_act_class = None, summary = True):
     """Constructs a Fully Connected Feed Forward Neural Network Architecture
     
         Input Parameters:
@@ -23,7 +23,7 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
         3. 'base_dense_units' - Number of dense units in the dense layers. Default Value - 64. dtype - integer.
         4. 'dense_bool' - Accepts either 'True' or 'False' (boolean inputs). If 'True', assigns each dense layer in the network to have the same number of dense units. If 'False', assigns each dense layer in the network to have dense units in
                           increment multiplicative order of 2 over the value of base_dense_units. For example - 64, 128, 256, 512, 1024.
-        5. 'num_layers' - Number of dense layers in the model architecture excluding the input and output layers. dtype - integer.
+        5. 'num_layers' - Number of dense layers in the model architecture excluding the input and output layers. dtype - integer. This also refers to a single dense block which can be either just a Dense layer or a block containing Dense Layer + BN + Dropout.
         6. 'activation' - Activation Function to be used in the network. Refer to https://www.tensorflow.org/api_docs/python/tf/keras/activations for available activation functions in TF.keras. To use a custom activation define the function and
                           pass the function name without quotations in this argument. For example - activation = mish.
         7. 'optimizer' - Optimizer to be used in the network. Refer to https://www.tensorflow.org/api_docs/python/tf/keras/optimizers for available optimizers in TF.keras. Additionally, you can pass in your own custom optimizer function name which
@@ -34,8 +34,9 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
         11. 'drop_value' - Dropout value for the dropout layers. Default - 0.25. dtype - float.
         12. 'batch_norm' - Uses Batch Normalization layer within each dense layer block. Accepts either 'True' or 'False'. Default value - 'False'.
         13. 'custom_act' - Use custom activation function as defined in the parameter 'activation'. Accepts either 'True' or 'False'. Default value - 'False'. Used for individual layer implementation for activation function. Please define the custom
-                           activation as a layer inherited class.
-        14. 'summary' - Prints the Model Summary. Accepts either 'True' or 'False'. Default value - 'True'.
+                           activation as a layer inherited class. #To be used when using Batch Norm (BN->act).
+        14. 'custom_act_class' - Define the class structure of the custom activation function. Default - None. Example - Mish() #To be used when using Batch Norm (BN->act). 
+        15. 'summary' - Prints the Model Summary. Accepts either 'True' or 'False'. Default value - 'True'.
         
         Returns:
         
@@ -83,7 +84,7 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
     
     ### Intializes the custom activation function. 
     if custom_act == True:
-        act = activation + "()"
+        act = custom_act_class
 
     print("Defining a " + str(num_layers) + " layered network initialized with " + str(activation) + " and " + optimizer + " Optimization.")
 
