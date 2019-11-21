@@ -12,7 +12,7 @@ from tensorflow import keras
 import tensorflow as tf
 from tensorflow.keras import layers, models
 
-def FNN(input_shape, num_classes, base_dense_units = 64, dense_bool = True, num_layers, activation = 'relu', optimizer = 'SGD', loss = 'categorical_crossentropy', metrics, dropout = False, drop_value = 0.25, batch_norm = False, custom_act = False):
+def FNN(input_shape, num_classes, base_dense_units = 64, dense_bool = True, num_layers, activation = 'relu', optimizer = 'SGD', loss = 'categorical_crossentropy', metrics, dropout = False, drop_value = 0.25, batch_norm = False, custom_act = False, summary = True):
     """Constructs a Fully Connected Feed Forward Neural Network Architecture
     
         Input Parameters:
@@ -34,6 +34,7 @@ def FNN(input_shape, num_classes, base_dense_units = 64, dense_bool = True, num_
         12. 'batch_norm' - Uses Batch Normalization layer within each dense layer block. Accepts either 'True' or 'False'. Default value - 'False'.
         13. 'custom_act' - Use custom activation function as defined in the parameter 'activation'. Accepts either 'True' or 'False'. Default value - 'False'. Used for individual layer implementation for activation function. Please define the custom
                            activation as a layer inherited class.
+        14. 'summary' - Prints the Model Summary. Accepts either 'True' or 'False'. Default value - 'True'.
         
         Returns:
         
@@ -112,6 +113,10 @@ def FNN(input_shape, num_classes, base_dense_units = 64, dense_bool = True, num_
             model.add(layers.Dense(dense_units[layer], activation=activation))
         
     model.add(layers.Dense(num_classes, activation=last_act))
+
+    ### Model Summary
+    if summary == True:
+        print(model.summary())
     
     ### Model Compilation
     model.compile(optimizer=optim,
