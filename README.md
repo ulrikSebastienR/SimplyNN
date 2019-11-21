@@ -11,7 +11,7 @@
 <br>
 <br>
 
-**SimplyNN** is a TF.keras wrapper which allows to build simple network architectures with various parameter configuration in a single line. 
+**SimplyNN** is a TF.keras sequential API wrapper which allows to build simple network architectures with various parameter configuration in a single line. 
 
 ## Fully Connected FeedForward Network:
 
