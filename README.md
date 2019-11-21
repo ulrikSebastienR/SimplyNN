@@ -27,7 +27,7 @@ model = FNN(input_shape = input_shape, num_classes = num_classes, num_layers = n
 
 Model Summary: 
 
-<div style="text-align:center"><img src ="assets/z.PNG"  width="200"/></div>
+<div style="text-align:center"><img src ="assets/z.PNG"  width="800"/></div>
 
 ### Using custom activation function Mish: 
 
@@ -81,4 +81,4 @@ model = FNN(input_shape = input_shape, num_classes = num_classes, num_layers = n
 
 Model Summary: 
 
-<div style="text-align:center"><img src ="assets/y.PNG"  width="200"/></div>
+<div style="text-align:center"><img src ="assets/y.PNG"  width="800"/></div>
