@@ -25,6 +25,10 @@ metrics = ['accuracy']
 model = FNN(input_shape = input_shape, num_classes = num_classes, num_layers = num_layers, metrics = metrics, dense_bool = False, activation = 'relu', optimizer = 'Adam', dropout = True, batch_norm = True)
 ```
 
+Model Summary: 
+
+<div style="text-align:center"><img src ="assets/z.png"  width="200"/></div>
+
 ### Using custom activation function Mish: 
 
 *Mish* class and function definition:
@@ -74,3 +78,7 @@ num_layers = 3
 metrics = ['accuracy']
 model = FNN(input_shape = input_shape, num_classes = num_classes, num_layers = num_layers, metrics = metrics, dense_bool = False, activation = Mish, optimizer = 'Adam', dropout = True)
 ```
+
+Model Summary: 
+
+<div style="text-align:center"><img src ="assets/y.png"  width="200"/></div>
