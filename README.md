@@ -1,4 +1,4 @@
-<img align="left" width="190" height="150" src="logo/logo_transparent.png">
+<img align="left" width="190" height="190" src="logo/logo_transparent.png">
 
 # Simply NN
 <p align="left">
