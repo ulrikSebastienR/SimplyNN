@@ -85,7 +85,7 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
     if custom_act == True:
         act = activation + "()"
 
-    print("Defining a " + str(num_layers) + " layered network initialized with " + activation + " and " + optimizer + " Optimization.")
+    print("Defining a " + str(num_layers) + " layered network initialized with " + str(activation) + " and " + optimizer + " Optimization.")
 
 
     ### Constructs the sequential model
