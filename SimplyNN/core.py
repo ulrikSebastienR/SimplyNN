@@ -94,7 +94,7 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
     for layer in range(num_layers):
         if batch_norm == True and dropout == True:
             model.add(layers.Dense(dense_units[layer]))
-            model.add(layers.normalization.BatchNormalization())
+            model.add(layers.BatchNormalization())
             if custom_act == False:
                 model.add(tf.keras.layers.Activation(activation))
             else:
@@ -102,7 +102,7 @@ def FNN(input_shape, num_classes, num_layers, metrics, base_dense_units = 64, de
             model.add(layers.Dropout(drop_value))
         elif batch_norm == True and dropout == False:
             model.add(layers.Dense(dense_units[layer]))
-            model.add(layers.normalization.BatchNormalization())
+            model.add(layers.BatchNormalization())
             if custom_act == False:
                 model.add(tf.keras.layers.Activation(activation))
             else:
